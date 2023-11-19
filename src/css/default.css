@@ -1,0 +1,79 @@
+@import url(https://fonts.bunny.net/css?family=noto-sans-georgian:300,600,900);
+@import url(https://fonts.bunny.net/css?family=noto-serif-georgian:300,600,900);
+
+@media (max-resolution: 99dpi) {
+    p {
+        font-family: 'Noto Sans Georgian', sans-serif;
+    }
+}
+
+@media (min-resolution: 100dpi) {
+    p {
+        font-family: 'Noto Serif Georgian', serif;
+    }
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Noto Sans Georgian', sans-serif;
+}
+
+html {
+    background-color: silver;
+}
+
+.major {
+    height: 90%;
+    border: 3px dashed rgb(92, 92, 92);
+    margin: 0 auto;
+    position: relative;
+    padding: 10px;
+    background-color: darkgray;
+}
+
+.major::after {
+    content: "+";
+    position: absolute;
+    left: -6px;
+    top: -14px;
+    font-family: 'Noto Sans Georgian', sans-serif;
+    font-weight: bold;
+    font-size: 18px;
+    color: rgb(92, 92, 92);
+}
+
+.major::before {
+    content: "+";
+    position: absolute;
+    right: -6px;
+    top: -14px;
+    font-family: 'Noto Sans Georgian', sans-serif;
+    font-weight: bold;
+    font-size: 18px;
+    color: rgb(92, 92, 92);
+}
+
+.major .inner::after {
+    content: "+";
+    position: absolute;
+    left: -6px;
+    bottom: -13px;
+    font-family: 'Noto Sans Georgian', sans-serif;
+    font-weight: bold;
+    font-size: 18px;
+    color: rgb(92, 92, 92);
+}
+
+.major .inner::before {
+    content: "+";
+    position: absolute;
+    right: -6px;
+    bottom: -13px;
+    font-family: 'Noto Sans Georgian', sans-serif;
+    font-weight: bold;
+    font-size: 18px;
+    color: rgb(92, 92, 92);
+}
+
+.major:nth-child(1) {
+    width: 60%;
+}
