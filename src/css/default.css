@@ -42,7 +42,7 @@ nav > * {
     margin-right: 10pt;
 }
 
-nav > *:hover {
+nav > *:active {
     background-color: rgb(13, 73, 205);
 }
 
