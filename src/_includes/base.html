@@ -1,22 +1,27 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>{{ title }}</title>
-    <link rel="stylesheet" href="css/default.css">
+    <link rel="stylesheet" href="../css/default.css" />
 </head>
 
 <body>
-    <div class="major">
-        <div class="inner">
-            <header>
-                <h1>{{ title }}</h1>
-            </header>
-            <main>
-                {{ content }}
-            </main>
-        </div>
+    <nav class="os">
+        <img src="../img/menu.png" id="menu"/>
+        <p>File</p>
+        <p>Edit</p>
+        <p>View</p>
+        <p>Help</p>
+    </nav>
+
+    <div class="window" id="safari">
+        
+    </div>
+
+    <div class="os" id="dock">
+        <p style="color: red;">test</p>
     </div>
 </body>
 </html>

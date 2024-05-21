@@ -1,79 +1,77 @@
-@import url(https://fonts.bunny.net/css?family=noto-sans-georgian:300,600,900);
-@import url(https://fonts.bunny.net/css?family=noto-serif-georgian:300,600,900);
-
-@media (max-resolution: 99dpi) {
-    p {
-        font-family: 'Noto Sans Georgian', sans-serif;
-    }
-}
-
-@media (min-resolution: 100dpi) {
-    p {
-        font-family: 'Noto Serif Georgian', serif;
-    }
-}
-
-h1, h2, h3, h4, h5, h6 {
-    font-family: 'Noto Sans Georgian', sans-serif;
-}
-
 html {
-    background-color: silver;
+    background: url(../img/background.jpg) no-repeat center center fixed; 
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
 }
 
-.major {
-    height: 90%;
-    border: 3px dashed rgb(92, 92, 92);
-    margin: 0 auto;
-    position: relative;
-    padding: 10px;
-    background-color: darkgray;
+.os {
+    user-select: none;
+    color: #000000;
+    font-size: 100%;
+    font-family: "Lucida Grande", "Lucida Sans Unicode",
+    "Garuda", "Malayalam", Arial, sans-serif;
 }
 
-.major::after {
-    content: "+";
+nav {
+    /* Style */
+    /* https://github.com/B00merang-Project/OS-X-Mavericks */
+    background-image: linear-gradient(
+        rgba(245, 245, 245, 0.7),
+        rgba(210, 210, 210, 0.7)
+    );
+    background-repeat: repeat;
+    outline: 1px transparent;
+    box-shadow: 0 -5pt 10pt 5pt;
+
+    /* Position */
+    /* https://stackoverflow.com/questions/2867503/height-of-the-apple-menubar */
+    height: 22pt;
+    width: 100%;
+    padding: 0px;
+    /* overflow: hidden; */
     position: absolute;
-    left: -6px;
-    top: -14px;
-    font-family: 'Noto Sans Georgian', sans-serif;
-    font-weight: bold;
-    font-size: 18px;
-    color: rgb(92, 92, 92);
+    top: 0;
+    left: 0;
+    display: flex;
+    align-items: center;
 }
 
-.major::before {
-    content: "+";
+nav > * {
+    margin-right: 10pt;
+}
+
+nav > *:hover {
+    background-color: rgb(13, 73, 205);
+}
+
+/* top-left icon */
+#menu { 
+    height: 100%;
+    margin-left: 10pt;
+}
+
+#dock {
+    /* Position */
+    width: 50%;
     position: absolute;
-    right: -6px;
-    top: -14px;
-    font-family: 'Noto Sans Georgian', sans-serif;
-    font-weight: bold;
-    font-size: 18px;
-    color: rgb(92, 92, 92);
+    bottom: 0;
+    left: 0;
+    right: 0;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+
+    background-color: red;
 }
 
-.major .inner::after {
-    content: "+";
-    position: absolute;
-    left: -6px;
-    bottom: -13px;
-    font-family: 'Noto Sans Georgian', sans-serif;
-    font-weight: bold;
-    font-size: 18px;
-    color: rgb(92, 92, 92);
+/* triangle before the dock */
+#dock::before {
+    
 }
 
-.major .inner::before {
-    content: "+";
-    position: absolute;
-    right: -6px;
-    bottom: -13px;
-    font-family: 'Noto Sans Georgian', sans-serif;
-    font-weight: bold;
-    font-size: 18px;
-    color: rgb(92, 92, 92);
-}
+/* triangle after the dock */
+#dock::after {
 
-.major:nth-child(1) {
-    width: 60%;
 }
