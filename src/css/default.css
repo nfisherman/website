@@ -1,3 +1,16 @@
+:root {
+    --gray-gradient: linear-gradient(
+        rgba(245, 245, 245, 0.7),
+        rgba(210, 210, 210, 0.7)
+    );
+    --blue-gradient: linear-gradient(
+        rgb(100, 137, 243),
+        rgb(38, 82, 177)
+    );
+
+    --white: #f5f9f8;;
+}
+
 html {
     background: url(../img/background.jpg) no-repeat center center fixed; 
     -webkit-background-size: cover;
@@ -17,10 +30,7 @@ html {
 #menubar {
     /* Style */
     /* https://github.com/B00merang-Project/OS-X-Mavericks */
-    background-image: linear-gradient(
-        rgba(245, 245, 245, 0.7),
-        rgba(210, 210, 210, 0.7)
-    );
+    background-image: var(--gray-gradient);
     background-repeat: repeat;
     outline: 1px transparent;
     box-shadow: 0 -5pt 10pt 5pt;
@@ -55,7 +65,8 @@ html {
 }
 
 .dropbtn:focus {
-    background-color: rgb(13, 73, 205);
+    background-image: var(--blue-gradient);
+    color: var(--white);
 }
 
 .dropdown {
@@ -67,7 +78,7 @@ html {
 .dropdown-content {
     display: none;
     position: absolute;
-    background-color: #f5f9f8;
+    background-color: var(--white);
     min-width: 160px;
     box-shadow: 0 0pt 0pt 0pt;
     border-radius: 0 0 5px 5px;
@@ -81,8 +92,8 @@ html {
 }
 
 .dropdown-content *:hover {
-    color: #f5f9f8;
-    background-color: rgb(13, 73, 205);
+    color: var(--white);
+    background-image: var(--blue-gradient);
 }
 
 .show {
