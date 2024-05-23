@@ -93,8 +93,8 @@ html {
 }
 
 .dropdown-content *:hover {
-    color: var(--white);
     background-image: var(--blue-gradient);
+    color: var(--white);
 }
 
 .show {
