@@ -8,12 +8,48 @@
 </head>
 
 <body>
-    <nav class="os">
-        <img src="../img/menu.png" id="menu"/>
-        <p>File</p>
-        <p>Edit</p>
-        <p>View</p>
-        <p>Help</p>
+    <nav id="menubar" class="os">
+        <script src="../js/menubar.js"></script>
+        <div class="dropdown">
+            <img src="../img/menu.png" onclick="dropdown('menuDropdown')" class="dropbtn" id="menu"/>
+            <div id="menuDropdown" class="dropdown-content">
+                <p>Test</p>
+                <p>Test</p>
+                <p>Test</p>
+            </div>
+        </div>
+        <div class="dropdown">
+            <button onclick="dropdown('fileDropdown')" class="os dropbtn">File</button>
+            <div id="fileDropdown" class="dropdown-content">
+                <p>Test</p>
+                <p>Test</p>
+                <p>Test</p>
+            </div>
+        </div>
+        <div class="dropdown">
+            <button onclick="dropdown('editDropdown')" class="os dropbtn">Edit</button>
+            <div id="editDropdown" class="dropdown-content">
+                <p>Test</p>
+                <p>Test</p>
+                <p>Test</p>
+            </div>
+        </div>
+        <div class="dropdown">
+            <button onclick="dropdown('viewDropdown')" class="os dropbtn">View</button>
+            <div id="viewDropdown" class="dropdown-content">
+                <p>Test</p>
+                <p>Test</p>
+                <p>Test</p>
+            </div>
+        </div>
+        <div class="dropdown">
+            <button onclick="dropdown('helpDropdown')" class="os dropbtn">Help</button>
+            <div id="helpDropdown" class="dropdown-content">
+                <p>Test</p>
+                <p>Test</p>
+                <p>Test</p>
+            </div>
+        </div>
     </nav>
 
     <div class="window" id="safari">

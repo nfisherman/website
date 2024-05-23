@@ -14,7 +14,7 @@ html {
     "Garuda", "Malayalam", Arial, sans-serif;
 }
 
-nav {
+#menubar {
     /* Style */
     /* https://github.com/B00merang-Project/OS-X-Mavericks */
     background-image: linear-gradient(
@@ -38,18 +38,59 @@ nav {
     align-items: center;
 }
 
-nav > * {
+#menubar > * {
     margin-right: 10pt;
 }
 
-nav > *:active {
+/* #menubar > *:active {
     background-color: rgb(13, 73, 205);
-}
+} */
 
 /* top-left icon */
 #menu { 
     height: 100%;
     margin-left: 10pt;
+}
+
+.dropbtn {
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0);
+    border: none;
+}
+
+.dropbtn:focus {
+    background-color: rgb(13, 73, 205);
+}
+
+.dropdown {
+    height: 100%;
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f5f9f8;
+    min-width: 160px;
+    box-shadow: 0 0pt 0pt 0pt;
+    border-radius: 0 0 5px 5px;
+    z-index: 1;
+}
+
+.dropdown-content * {
+    /* padding: 1px 1px; */
+    text-decoration: none;
+    display: block;
+}
+
+.dropdown-content *:hover {
+    color: #f5f9f8;
+    background-color: rgb(13, 73, 205);
+}
+
+.show {
+    display: block;
 }
 
 #dock {
@@ -65,6 +106,7 @@ nav > *:active {
 
     background-color: red;
 }
+
 
 /* triangle before the dock */
 #dock::before {
