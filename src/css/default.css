@@ -14,7 +14,8 @@
 
 html {
     background-image: url(../img/background/emc2.jpg);
-    background-size: cover;
+    background-position-x: 200px;
+    background-size:auto;
     
 }
 
@@ -28,7 +29,7 @@ body {
 
 hr {
     border: 0;
-    border-top: white;
+    border-top: 2px white;
 }
 
 hr.dashed {
@@ -52,11 +53,8 @@ button#navexpand, button#navcollapse {
 }
 
 .root {
-    /* width: 900px; */
     display: flex;
-    padding-top: 20px;
     margin-left: 220px;
-    /* border: dashed var(--seperator); */
 }
 
 .child {
@@ -76,9 +74,39 @@ div#right_sidebar {
 .main {
     width: 60%;
     background-color: var(--buff);
-    color: var(--kobicha);  
-    /* border-left: 2px dashed gray;
-    border-right: 2px dashed gray; */
+    color: var(--kobicha);
+}
+
+div#motd {
+    max-width: 717px;
+    overflow: hidden;
+    display: flex;
+    white-space: nowrap;
+    padding-top: 20px;
+    margin-left: 220px;
+}
+
+.marquee {
+    background-color: black;
+    font-size: 20px;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: white;
+    animation: marquee 6s linear infinite;
+}
+
+.marquee span {
+    margin: 0 5px;
+}
+
+/* Make it move */
+@keyframes marquee {
+    from {
+        transform: translate3d(0, 0, 0);
+    }
+    to {
+        transform: translate3d(-100%, 0, 0);
+    }
 }
 
 
@@ -128,16 +156,28 @@ span#song {
 }
 
 .bar {
-    width: 634px;
+    max-width: 728px;
     margin-top: 12px;
+    padding-top: 10px;
+    margin-right: 10px;
     padding-left: 210px;
-    display: flex;
     background-color: var(--dark-spring-green);
     color: white;
 }
 
 .bar > * {
     width: 100%;
+}
+
+div#buttons {
+    display: flexbox;
+}
+
+div#buttons > * {
+    width: 88px;
+    height: 31px;
+    margin-right: 5px;
+    text-decoration: none;
 }
 
 div.left {
@@ -150,7 +190,12 @@ div.right {
     justify-content: flex-end;
 }
 
+/* mobile screens */
 @media screen and (max-width: 680px) {
+    html {
+        background-position-x: 0;
+    }
+
     div#left_sidebar {
         width: 100%;
         height: auto;
@@ -212,6 +257,10 @@ div.right {
     img#logo_img {
         width: 60px;
         height: auto;
+    }
+
+    .bar {
+        width: 100%;
     }
 
     @media screen and (max-width: 340px) {
