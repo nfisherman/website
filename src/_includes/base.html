@@ -5,24 +5,32 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{ title }}</title>
     <link rel="stylesheet" href="/css/default.css">
+    <script src="/js/main.js" type="text/javascript"></script>
 </head>
 
-<body onload="randomize_logo()">
+<body onload="main()">
     <!-- layout -->
-    <div class="root">
-        <div class="child sidebar" id="left_sidebar">
-            <div id="logo">
-                <a href="/" id="logo_nav" alt="Home">
-                    <p>nfisherman</p>
-                    <img src="/img/logo/fishingboat.gif" id="logo_img"/>
-                </a>
-                <script src="/js/main.js" type="text/javascript"></script>
-            </div>
-            <hr class="dashed">
-            <ul class="nav">
+    <div id="left_sidebar">
+        <div id="logo">
+            <a href="/" id="logo_nav" alt="Home">
+                <p>nfisherman</p>
+                <img src="/img/logo/fishingboat.gif" id="logo_img"/>
+            </a>
+        </div>
+        <hr class="dashed">
+        <button id="navexpand" alt="Show Navigation Controls" onclick="expand_navbar()" type="button">↓ expand</button>
+        <div id="nav">
+            <ul>
                 <li><a href="/about/">About</a></li>
+                <li><a href="/about/">About</a></li>
+                <li><a href="/about/">About</a></li>
+                <li><a href="/about/">About</a></li>
+                <li><a href="/about/">About</a></li>
+                <button id="navcollapse" alt="Hide Navigation Controls" onclick="collapse_navbar()" type="button">↑ collapse</button>
             </ul>
         </div>
+    </div>
+    <div class="root">
         <div class="child main">
             <!-- main content -->
             <header>
@@ -34,7 +42,16 @@
         </div>
         <div class="child sidebar" id="right_sidebar">
             <!-- right_sidebar content -->
-            <p>right sidebar</p>
+            <div>
+                <h4>recently played</h4>
+                <hr class="dashed">
+                <img src="" id="cover"/>
+                <a href="" id="widget">
+                    <span id="song">&#8987;</span><br>
+                    <span id="album"></span><br>
+                    <span id="artist"></span>
+                </a>
+            </div>
         </div>
     </div>
     <footer class="bar">
