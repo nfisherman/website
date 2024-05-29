@@ -20,5 +20,8 @@
   "homepage": "https://github.com/nfisherman/website#readme",
   "devDependencies": {
     "@11ty/eleventy": "^2.0.1"
+  },
+  "dependencies": {
+    "fs": "^0.0.1-security"
   }
 }
