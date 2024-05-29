@@ -9,4 +9,4 @@ My website built with blood, sweat, and tears (and eleventy)
 
  ## Usage
 
-``npm run serve`` to serve locally
+``npm @11ty/eleventy --serve`` to serve locally
