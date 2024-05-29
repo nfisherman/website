@@ -3,18 +3,30 @@
     src: url("../fonts/Hanged_Letters.ttf") format("truetype");
 }
 
+:root {
+    /* palette */
+    --kobicha: #683818ff;
+    --dark-spring-green: #2D6C50ff;
+    --reseda-green: #5C775Eff;
+    --buff: #E4AD80ff;
+    --copper: #B6713Bff;
+}
+
 html {
-    background-image: url(../img/background/paper.jpg);
-    background-repeat: repeat;
+    background-image: url(../img/background/emc2.jpg);
+    background-size: cover;
 }
 
 body {
-    padding:10px;
+    margin-top: 10px;
+    width: 900px;
+    box-sizing: border-box;
+    padding: 10px;
 }
 
 hr {
     border: 0;
-    border-top: 2px grey;
+    border-top: white;
 }
 
 hr.dashed {
@@ -22,9 +34,9 @@ hr.dashed {
 }
 
 .root {
-    width: 900px;
+    /* width: 900px; */
     display: flex;
-    border: 2px dashed gray;
+    /* border: dashed var(--seperator); */
 }
 
 .child {
@@ -36,8 +48,9 @@ hr.dashed {
 
 .sidebar {
     width: 20%;
-    background: rgba(255, 0, 0, 0.1);
     overflow: hidden;
+    background-color: var(--reseda-green);
+    color: white;
 }
 
 div#left_sidebar {
@@ -46,21 +59,21 @@ div#left_sidebar {
 
 .main {
     width: 60%;
-    background: rgba(21, 255, 0, 0.1);
-    border-left: 2px dashed gray;
-    border-right: 2px dashed gray;
+    background-color: var(--buff);
+    color: var(--kobicha);  
+    /* border-left: 2px dashed gray;
+    border-right: 2px dashed gray; */
 }
 
 
 div#logo {
     position: relative;
-    background:rgba(21, 255, 0, 0.1);
     margin-top: -30px;
 }
 
 a#logo_nav {
     font-family: 'Hanged_Letters', 'Brush Script MT', cursive;
-    color: black;
+    color: white;
     text-decoration: none;
     font-size: 2.39em;
     margin-bottom: 0;
@@ -74,18 +87,55 @@ img#logo_img {
     width: 100%;
 }
 
+img.icon {
+    width: 48px;
+    height: 48px;
+}
+
+.bar {
+    margin-top: 10px;
+    display: flex;
+    box-sizing: border-box;
+    padding: 10px;
+    background-color: var(--dark-spring-green);
+    color: white;
+}
+
+.bar > * {
+    width: 100%;
+}
+
+div.left {
+    display: flex;
+    justify-content: flex-start;
+}
+
+div.right {
+    display: flex;
+    justify-content: flex-end;
+}
+
+
 @media screen and (max-width: 900px) {
     .root {
-        display:contents;
+        width: 100%;
+        display: table;
+        justify-content: center;
     }
 
-    .root, .child {
+    .child {
         width: 100%;
+    }
+
+    .main {
+        border-top: 2px dashed gray;
+        border-bottom: 2px dashed gray;
+        border-left: 0;
+        border-right: 0;
     }
 
     div#logo {
         position: relative;
-        background:rgba(21, 255, 0, 0.1);
         display: flex;
         justify-content: center;
     }
