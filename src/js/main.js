@@ -1,3 +1,5 @@
+const lastfm_username = "ingenuineangel";
+
 function randomize_logo() {
     const logo = document.getElementById('logo_img');
     
@@ -27,6 +29,16 @@ function collapse_navbar(){
     document.querySelector('#nav').style.display = "none";
 }
 
+function hide_decorations(){
+    let textDecorations = document.getElementsByClassName('text-decoration');
+
+    if(textDecorations[0].hasAttribute("src")){
+        for(const deco of textDecorations){
+            deco.style.display = "none";
+        }
+    }
+}
+
 function recently_played(username) {
     let url = 'https://lastfm-last-played.biancarosa.com.br/' + username + '/latest-song';
     
@@ -49,5 +61,8 @@ function recently_played(username) {
 
 function main() {
     randomize_logo();
-    recently_played("ingenuineangel");
+    hide_decorations();
+    recently_played(lastfm_username);
+
+    setInterval(recently_played(lastfm_username), 360000);
 }
