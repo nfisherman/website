@@ -1,9 +1,10 @@
 ---
 title: the end is never the end is never the end is never the end is never 
-title-decoration: ""
+title-decoration: "/img/head_construction.gif"
 layout: "base.html"
 ---
 
+<img src="/img/construction_banner.gif" style="width:100%;">
 
 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur dapibus justo eget porttitor aliquam. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Suspendisse metus enim, cursus ac lectus vitae, iaculis eleifend dolor. Praesent iaculis, tellus id lobortis sodales, enim nibh lobortis enim, eu convallis risus nunc at eros. Phasellus ornare blandit nunc. Proin porttitor tellus a diam consequat, ut consequat ipsum bibendum. Duis mattis interdum lectus, et consectetur nisi lacinia eget. Ut quis neque a neque tristique efficitur non quis sapien. Aenean pellentesque, metus quis consectetur interdum, nisi massa blandit ante, non varius ligula leo eget purus.
 
