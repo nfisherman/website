@@ -22,6 +22,9 @@
     "@11ty/eleventy": "^2.0.1"
   },
   "dependencies": {
-    "fs": "^0.0.1-security"
+    "dotenv": "^16.4.5",
+    "fs": "^0.0.1-security",
+    "html-minifier-terser": "^7.2.0",
+    "terser": "^5.31.0"
   }
 }
