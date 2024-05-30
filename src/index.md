@@ -1,5 +1,6 @@
 ---
-title: Hello World
+title: the end is never the end is never the end is never the end is never 
+title-decoration: ""
 layout: "base.html"
 ---
 
