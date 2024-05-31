@@ -1,9 +1,14 @@
 #!/usr/bin/env bash
 
 if ! command -v tar > /dev/null; then
-    echo "tar: command not found";
-    exit 1;
+    echo "tar: command not found"
+    exit 1
 fi
+if ! command -v node > /dev/null; then
+    echo "node: command not found"
+    exit 1
+fi
+
 
 __NAME__=$(basename "$0")
 function print_help() {
@@ -71,8 +76,13 @@ fi
 VERSION=$(echo "$VERSION" | sed 's/v*//' -)
 OUTPUT=$(echo "$OUTPUT" | sed 's/\/*$//' -)
 SOURCE=$(echo "$SOURCE" | sed 's/\/*$//' -)
-
 fullpath="$OUTPUT/v$VERSION/nfisherman_website_v$VERSION.tar.gz"
+
 mkdir -p "$OUTPUT/v$VERSION" || { echo "[FATAL] You do not have access to $OUTPUT."; exit 1; }
-tar -czvf "$fullpath" "$SOURCE/"
-sha256sum "$fullpath" > "$fullpath.DIGESTS"
+
+rm -rf _site
+npx @11ty/eleventy
+
+tar -czvf "$fullpath" -C "$SOURCE" .
+sha256sum "$fullpath" \
+| sed "s/${OUTPUT}\/v${VERSION}\///" > "$fullpath.DIGESTS"
