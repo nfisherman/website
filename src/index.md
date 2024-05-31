@@ -1,5 +1,5 @@
 ---
-title: the end is never the end is never the end is never the end is never 
+title: watering hole 
 title-decoration: "/img/head_construction.gif"
 layout: "base.html"
 ---
