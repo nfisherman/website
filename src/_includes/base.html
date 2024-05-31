@@ -27,11 +27,9 @@
         <button id="navexpand" alt="Show Navigation Controls" onclick="expand_navbar()" type="button">↓ expand</button>
         <div id="nav">
             <ul>
+                <li><a href="/">Home</a></li>
                 <li><a href="/about/">About</a></li>
-                <li><a href="/about/">About</a></li>
-                <li><a href="/about/">About</a></li>
-                <li><a href="/about/">About</a></li>
-                <li><a href="/about/">About</a></li>
+                <li><a href="/projects/">Projects</a></li>  
                 <button id="navcollapse" alt="Hide Navigation Controls" onclick="collapse_navbar()" type="button">↑ collapse</button>
             </ul>
         </div>
@@ -49,18 +47,32 @@
             <main>
                 {{ content }}
             </main>
+            <hr>
+            <p xmlns:cc="http://creativecommons.org/ns#" ><a rel="cc:attributionURL" href="{{ permalink }}">This work</a> by <a rel="cc:attributionURL dct:creator" property="cc:attributionName" href="http://nfisherman.com">Cedar Lehman</a> is licensed under <a href="https://creativecommons.org/licenses/by-nc/4.0/?ref=chooser-v1" target="_blank" rel="license noopener noreferrer" style="display:inline-block;">CC BY-NC 4.0<img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/cc.svg?ref=chooser-v1" alt=""><img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/by.svg?ref=chooser-v1" alt=""><img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/nc.svg?ref=chooser-v1" alt=""></a></p> 
         </div>
         <div class="child sidebar" id="right_sidebar">
             <!-- right_sidebar content -->
             <div>
                 <h4>recently played</h4>
                 <hr class="dashed">
-                <img src="" id="cover"/>
-                <a href="" id="widget">
-                    <span id="song">&#8987;</span><br>
-                    <span id="album"></span><br>
-                    <span id="artist"></span>
-                </a>
+                <div id="lastfm">
+                    <img src="" id="cover"/>
+                    <a href="" id="widget">
+                        <span id="song">&#8987;</span><br>
+                        <span id="album"></span><br>
+                        <span id="artist"></span>
+                    </a>
+                </div>
+
+                <noscript>
+                    <style>
+                        div#lastfm {
+                            display: none;
+                            visibility: none;
+                        }
+                    </style>
+                    <a href="https://www.last.fm/user/ingenuineangel">ingenuineangel - last.fm</a>
+                </noscript>
             </div>
         </div>
     </div>
@@ -70,7 +82,7 @@
                 <img src="/img/buttons/freegaza.gif">
             </a>
             <img src="/img/buttons/gnu-linux.gif">
-            <a href="https://archve.org/">
+            <a href="https://archive.org/">
                 <img src="/img/buttons/internetarchive.png">
             </a>
             <img src="/img/buttons/evilchrome.gif">
