@@ -36,10 +36,15 @@ body {
 hr {
     border: 0;
     border-top: 2px white;
+    border-style: solid;
 }
 
 hr.dashed {
     border-style: dashed;
+}
+
+.main > hr {
+    border-color: var(--kobicha);
 }
 
 div#left_sidebar {
