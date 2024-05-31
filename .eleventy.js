@@ -29,33 +29,6 @@ module.exports = (eleventyConfig) => {
         return content;
     });
 
-    // eleventyConfig.addTransform("jsmin", (content, outputPath) => {
-    //     if(outputPath.endsWith(".js")) {
-    //         return jsmin.minify(content, {
-    //             toplevel: true,
-    //             compress: {
-    //                 global_defs: {
-    //                     "@console.log": "alert"
-    //                 },
-    //                 passes: 2
-    //             },
-    //             format: {
-    //                 preamble: "/* minified */"
-    //             }
-    //         }).then(contentStr => {
-    //             return new Promise(function(resolve) {
-    //                 resolve(
-    //                     "<!-- HTML is minified. Clone from Github and run locally. -->\n" + 
-    //                     "<!-- https://github.com/nfisherman/nfisherman.com -->\n" +
-    //                     contentStr
-    //                 );
-    //             });
-    //         })
-    //     }
-
-    //     return content;
-    // });
-    
     return {
         dir: {
             input: "src",
