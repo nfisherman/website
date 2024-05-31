@@ -11,7 +11,7 @@
 #################
 
 # The repo to pull a release from
-REPO="https://github.com/nfisherman/debian-config"
+REPO="https://github.com/nfisherman/nfisherman.com"
 
 # Output directory
 OUTDIR="nfisherman.com"
