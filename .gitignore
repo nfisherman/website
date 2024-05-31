@@ -399,3 +399,4 @@ FodyWeavers.xsd
 
 _site/
 .env
+release/
