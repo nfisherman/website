@@ -16,12 +16,14 @@
 REPO="https://github.com/nfisherman/nfisherman.com"
 
 # Output directory
-OUTDIR="nfisherman.com"
+# Leave blank to perform an in-place update
+OUTDIR=""
 
 # How many times the script will try to download before giving up
 TRIES=5
 
-### Compatibility ###
+
+### Dependencies ###
 
 iscmd() { 
     command -v "$1" > /dev/null
@@ -31,14 +33,9 @@ if ! iscmd "curl"; then
     echo "curl: command not found"
     whoops=1
 fi
-
 if ! iscmd "tar"; then
-    if ! iscmd 1; then
-        echo "either \"tar\" or \"unzip\" must be installed, but neither are"
-        whoops=1
-    else
-        unzip=1
-    fi
+    echo "tar: command not found"
+    whoops=1
 fi
 if ! iscmd "wget"; then 
     echo "wget: command not found"
@@ -78,22 +75,37 @@ if ! wget -q --tries="$TRIES" --spider "$REPO"; then
 fi
 
 mkdir -p "$OUTDIR" || { echo "[FATAL] You do not have access to $OUTDIR."; exit 1; }
-if [ "$unzip" = 1 ]; then
-    RANDY="/tmp/src-download-$(tr -cd 0-9 </dev/urandom | head -c 3).zip"
+
+homeplate=$(pwd)
+cd /tmp || { echo "No access to /tmp folder???"; exit 1; }
+i=1
+while [ $i -le $TRIES ] \
+&& ! sha256sum --check "nfisherman-website-*.DIGESTS" 2>/dev/null; do
+    rm "nfisherman-website-*" 2>/dev/null
 
     curl -s "$api/releases/latest" \
-    | grep "nfisherman.com.tar.gz" \
+    | grep "nfisherman-website-*" \
     | cut -d : -f 2,3 \
-    | tr -d ,\" \
-    | wget --tries="$TRIES" -qi - -O "$RANDY"
+    | tr -d \" \
+    | wget --tries="$TRIES" -qi - -O "/tmp/"
 
-    unzip -q "$RANDY" -d "$OUTDIR/"
-    rm "$RANDY"
-else
-    curl -s "$api/releases/latest" \
-    | grep "$api/tarball/*" \
-    | cut -d : -f 2,3 \
-    | tr -d ,\" \
-    | wget --tries="$TRIES" -qi - -O- \
-    | tar -xzf - -C "$OUTDIR"
+    i=$(i + 1)
+done
+
+if [ $i = $TRIES ]; then
+    echo "[FATAL] Failed to install too many times. Aborting..."
+    rm nfisherman-website-*
+    exit 1
 fi
+
+cd "$homeplate" || { echo "Script directory has disappeared???"; exit 1; }
+if [ $OUTDIR = "" ]; then
+    cd "$homeplate" || { echo "[FATAL] Script directory has disappeared???"; exit 1; }
+else
+    cd "$OUTDIR" || { echo "[FATAL] No access to output dir."; exit 1; }
+fi
+
+find . ! -name "$(basename $0)" -type f -exec rm {} +
+find . -type d -exec rm -r {} +
+
+tar --overwrite -xzvf nfisherman-website-*.tar.gz
