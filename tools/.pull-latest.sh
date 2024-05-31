@@ -6,6 +6,8 @@
 # To Public License, Version 2, as published by Sam Hocevar. See
 # http://www.wtfpl.net/ for more details.
 
+# currently pretty bad, I'd just download the github release yourself
+
 #################
 ### Variables ###
 #################
@@ -80,7 +82,7 @@ if [ "$unzip" = 1 ]; then
     RANDY="/tmp/src-download-$(tr -cd 0-9 </dev/urandom | head -c 3).zip"
 
     curl -s "$api/releases/latest" \
-    | grep "$api/zipball/*" \
+    | grep "nfisherman.com.tar.gz" \
     | cut -d : -f 2,3 \
     | tr -d ,\" \
     | wget --tries="$TRIES" -qi - -O "$RANDY"
