@@ -1,5 +1,4 @@
 #!/usr/bin/env bash
-set -x
 
 if ! command -v tar > /dev/null; then
     echo "tar: command not found";
@@ -73,6 +72,7 @@ VERSION=$(echo "$VERSION" | sed 's/v*//' -)
 OUTPUT=$(echo "$OUTPUT" | sed 's/\/*$//' -)
 SOURCE=$(echo "$SOURCE" | sed 's/\/*$//' -)
 
+fullpath="$OUTPUT/v$VERSION/nfisherman_website_v$VERSION.tar.gz"
 mkdir -p "$OUTPUT/v$VERSION" || { echo "[FATAL] You do not have access to $OUTPUT."; exit 1; }
-tar -czvf "$OUTPUT/v$VERSION/nfisherman_website_v$VERSION.tar.gz" \
-    "$SOURCE/"
+tar -czvf "$fullpath" "$SOURCE/"
+sha256sum "$fullpath" > "$fullpath.DIGESTS"
