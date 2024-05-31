@@ -38,7 +38,7 @@ function collapse_navbar(){
 function hide_decorations(){
     let textDecorations = document.getElementsByClassName('text-decoration');
 
-    if(textDecorations[0].hasAttribute("src")){
+    if(!textDecorations[0].hasAttribute("src")){
         for(const deco of textDecorations){
             deco.style.display = "none";
         }
