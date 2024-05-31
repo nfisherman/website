@@ -82,7 +82,7 @@ fi
 VERSION=$(echo "$VERSION" | sed 's/v*//' -)
 OUTPUT=$(echo "$OUTPUT" | sed 's/\/*$//' -)
 SOURCE=$(echo "$SOURCE" | sed 's/\/*$//' -)
-fullpath="$OUTPUT/v$VERSION/nfisherman_website_v$VERSION.tar.gz"
+fullpath="$OUTPUT/v$VERSION/nfisherman-website-v$VERSION.tar.gz"
 
 mkdir -p "$OUTPUT/v$VERSION" || { echo "[FATAL] You do not have access to $OUTPUT."; exit 1; }
 
