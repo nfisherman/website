@@ -88,8 +88,9 @@ fullpath="$OUTPUT/v$VERSION/nfisherman-website.tar.gz"
 mkdir -p "$OUTPUT/v$VERSION" \
 || { echo "[FATAL] You do not have access to $OUTPUT."; exit 1; }
 
-rm -rf _site
+rm -rf "$SOURCE"
 npx @11ty/eleventy
+echo "$VERSION" > "$SOURCE/VERSION"
 
 tar -czvf "$fullpath" -C "$SOURCE" .
 sha256sum "$fullpath" \
