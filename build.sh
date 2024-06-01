@@ -94,3 +94,8 @@ npx @11ty/eleventy
 tar -czvf "$fullpath" -C "$SOURCE" .
 sha256sum "$fullpath" \
 | sed "s/${OUTPUT}\/v${VERSION}\///" > "$fullpath.DIGESTS"
+
+echo "
+files built:
+$(pwd)/$fullpath         <- main archive
+$(pwd)/$fullpath.DIGESTS <- SHA256 hash"
