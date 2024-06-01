@@ -30,7 +30,8 @@ function print_help() {
     "
 }
 
-VALID_ARGS=$(getopt -o hv:o:s: --long help,version:,output:,source: -- "$@")
+VALID_ARGS=$(getopt -name $(basename "$0") -o hv:o:s: \
+    --long help,version:,output:,source: -- "$@")
 if [[ $? -ne 0 ]]; then
     print_help
     exit 1
@@ -84,7 +85,8 @@ OUTPUT=$(echo "$OUTPUT" | sed 's/\/*$//' -)
 SOURCE=$(echo "$SOURCE" | sed 's/\/*$//' -)
 fullpath="$OUTPUT/v$VERSION/nfisherman-website.tar.gz"
 
-mkdir -p "$OUTPUT/v$VERSION" || { echo "[FATAL] You do not have access to $OUTPUT."; exit 1; }
+mkdir -p "$OUTPUT/v$VERSION" \
+|| { echo "[FATAL] You do not have access to $OUTPUT."; exit 1; }
 
 rm -rf _site
 npx @11ty/eleventy

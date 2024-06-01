@@ -48,7 +48,8 @@ print_help() {
     "
 }
 
-VALID_ARGS=$(getopt -o hg:o:t: --long help,git:,output:,tries: -- "$@")
+VALID_ARGS=$(getopt -n $(basename "$0") -o hg:o:t: \
+    --long help,git:,output:,tries: -- "$@")
 if [ $? -ne 0 ]; then
     print_help
     exit 1
