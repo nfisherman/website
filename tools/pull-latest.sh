@@ -80,7 +80,7 @@ while [ : ]; do
             ;;
         -o | --output)
             if ! [ -f "$2" ]; then
-                printf "%s: '%s' does not exist" "-o" "$2"
+                printf "%s: '%s' does not exist" "$1" "$2"
                 exit 1
             fi
             OUTDIR="$2"
@@ -88,7 +88,7 @@ while [ : ]; do
             ;;
         -t | --tries)
             if ! [ "$2" -eq "$2" ] 2>/dev/null; then 
-                printf "%s: '%s' is not an integer" "-t" "$2"
+                printf "%s: '%s' is not an integer" "$1" "$2"
                 exit 1;
             fi
             TRIES="$2"
