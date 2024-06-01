@@ -18,7 +18,7 @@ fi
 
 __NAME__=$(basename "$0")
 function print_help() {
-    echo "Usage: $__NAME__ [-o /path/to/output] [-s /path/to/source]
+    echo "Usage: ./$__NAME__ [-o /path/to/output] [-s /path/to/source]
     
     Required Arguments:
         -v, --version       reported version number
@@ -82,7 +82,7 @@ fi
 VERSION=$(echo "$VERSION" | sed 's/v*//' -)
 OUTPUT=$(echo "$OUTPUT" | sed 's/\/*$//' -)
 SOURCE=$(echo "$SOURCE" | sed 's/\/*$//' -)
-fullpath="$OUTPUT/v$VERSION/nfisherman-website-v$VERSION.tar.gz"
+fullpath="$OUTPUT/v$VERSION/nfisherman-website.tar.gz"
 
 mkdir -p "$OUTPUT/v$VERSION" || { echo "[FATAL] You do not have access to $OUTPUT."; exit 1; }
 
