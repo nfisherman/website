@@ -30,7 +30,7 @@ function print_help() {
     "
 }
 
-VALID_ARGS=$(getopt -name $(basename "$0") -o hv:o:s: \
+VALID_ARGS=$(getopt -n $(basename "$0") -o hv:o:s: \
     --long help,version:,output:,source: -- "$@")
 if [[ $? -ne 0 ]]; then
     print_help
