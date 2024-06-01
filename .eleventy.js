@@ -9,7 +9,7 @@ module.exports = (eleventyConfig) => {
     eleventyConfig.addPassthroughCopy("./src/js/");
     eleventyConfig.addPassthroughCopy("./copyright");
     eleventyConfig.addPassthroughCopy({
-        "./tools/pull-latest.sh": "./"
+        "./tools/pull-latest.sh": "./pull-latest.sh"
     });
 
     eleventyConfig.addTransform("htmlmin", (content, outputPath) => {
