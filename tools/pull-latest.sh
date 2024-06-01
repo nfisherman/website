@@ -1,5 +1,4 @@
 #!/bin/sh
-set +x
 
 # This program is free software. It comes without any warranty, to
 # the extent permitted by applicable law. You can redistribute it
@@ -49,12 +48,14 @@ print_help() {
 }
 
 VALID_ARGS=$(getopt -n $(basename "$0") -o hg:o:t: \
-    --long help,git:,output:,tries: -- "$@")
+    --long help,bypass-warnings,bypass-hash,git:,output:,tries: -- "$@")
 if [ $? -ne 0 ]; then
     print_help
     exit 1
 fi
 
+WARNING=1
+HASH=1
 REPO="https://github.com/nfisherman/nfisherman.com"
 OUTDIR=""
 TRIES="5"
@@ -64,6 +65,14 @@ while [ : ]; do
         -h | --help) 
             print_help
             exit
+            ;;
+        --bypass-warnings)
+            WARNING=0
+            shift
+            ;;
+        --bypass-hash)
+            HASH=0
+            shift
             ;;
         -g | --git) 
             REPO="$2"
@@ -113,6 +122,15 @@ case "$OUTDIR" in
     *) OUTDIR="$OUTDIR/" ;;
 esac
 
+### Select installation folder ###
+
+homeplate=$(pwd)
+install="$OUTDIR/" \
+|| { echo "[FATAL] Script directory has disappeared???"; exit 1; }
+if [ "${OUTDIR}" = "" ]; then
+    install="${homeplate:?}/" 
+fi
+
 if ! [ -n "$TRIES" -a $TRIES -eq $TRIES ]; then 
     TRIES=0
 fi
@@ -125,19 +143,46 @@ if ! wget -q --tries="$TRIES" --spider "$REPO"; then
     exit 1
 fi
 
+## Deletion Warning
+if [ "$WARNING" = 1 ]; then
+    printf "
++-----------------------------------------------------------------------------+
+| [WARNING]                                                                   |
+|                                                                             |
+| This script will delete everything in the folder where it's installed.      |
+|                                                                             |
+| Your current install directory is:                                          |
+| %s  
+| EVERYTHING IN THIS FOLDER WILL BE ERASED!                                   |
++-----------------------------------------------------------------------------+
+Would you like to continue [y/N]? " "$install"
+    read -r response
+
+    if [ "$(echo $response | tr '[:upper:]' '[:lower:]')" != "y" ] \
+    && [ "$(echo $response | tr '[:upper:]' '[:lower:]')" != "yes" ]; then
+        echo "[INFO] Exiting..."
+        exit
+    fi
+fi
+
 if [ "$OUTDIR" != "" ]; then
     mkdir -p "$OUTDIR" \
     || { echo "[FATAL] You do not have access to $OUTDIR."; exit 1; }
+    echo "[INFO] $OUTDIR has been created."
 fi
 
 
 ### Attempt download & verify ###
 
-homeplate=$(pwd)
-cd /tmp || { echo "No access to /tmp folder???"; exit 1; }
+cd /tmp || { echo "[FATAL] No access to /tmp folder."; exit 1; }
 i=0
 while [ $i -lt $TRIES ] \
 && ! sha256sum --check "nfisherman-website.tar.gz.DIGESTS" 2>/dev/null; do
+    if [ $i != 0 ]; then
+        echo "[WARNING] Download attempt $i failed. Trying again."
+    fi
+    echo "[INFO] Downloading release..."
+
     rm nfisherman-website.tar.gz* 2>/dev/null
 
     wget "$REPO/releases/latest/download/nfisherman-website.tar.gz"
@@ -147,28 +192,29 @@ while [ $i -lt $TRIES ] \
 done
 
 if [ $i = $TRIES ]; then
-    echo "[FATAL] Failed to install too many times. Aborting..."
-    rm nfisherman-website.tar.gz*
-    exit 1
+    if [ $HASH = 1 ]; then
+        echo "[FATAL] Failed to install too many times. The file is either
+        corrupted or the hash is invalid. Run with --bypass-hash to install
+        anyways."
+        rm nfisherman-website.tar.gz*
+        exit 1
+    fi
+
+    echo "[WARNING] Hash verification failed. Continuing anyways..."
 fi
 
-
-### Select installation folder ###
-
-install="$OUTDIR/" \
-|| { echo "[FATAL] Script directory has disappeared???"; exit 1; }
-if [ "${OUTDIR}" = "" ]; then
-    install="${homeplate:?}/" 
-fi
-
+echo "[Info] Download complete."
 
 ### Clear out installation folder ###
 
+echo "[Info] Removing previous release..."
 find "$install"* ! -name "$(basename $0)" -type f -exec rm {} + 2>/dev/null
 find "$install"* -type d -exec rm -r {} +
 
 
 ### Install ###
 
-tar --overwrite -xzvf "nfisherman-website.tar.gz" -C "$install/" .
+echo "[Info] Unpacking release tarball..."
+tar --overwrite -xzvf "nfisherman-website.tar.gz" -C "$install/"
+echo "[Info] Cleaning up..."
 rm nfisherman-website.tar.gz*
