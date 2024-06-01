@@ -205,6 +205,7 @@ fi
 
 echo "[Info] Download complete."
 
+
 ### Clear out installation folder ###
 
 echo "[Info] Removing previous release..."
