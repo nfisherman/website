@@ -6,7 +6,7 @@
 
 @font-face {
     font-family: "Hanged_Letters";
-    src: url("../fonts/Hanged_Letters.ttf") format("truetype");
+    src: url("/asset/fonts/Hanged_Letters/Hanged_Letters.ttf") format("truetype");
 }
 
 :root {
@@ -19,7 +19,7 @@
 }
 
 html {
-    background-image: url(../img/background/emc2.jpg);
+    background-image: url(/asset/img/background/emc2.jpg);
     background-position-x: 200px;
     background-size: auto;
     background-attachment: fixed;

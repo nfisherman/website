@@ -1,5 +1,5 @@
 ---
 title: blog index 
-title-decoration: "/img/head_construction.gif"
-layout: "base.html"
+title-decoration: "/asset/img/head_construction.gif"
+layout: "blog.html"
 ---

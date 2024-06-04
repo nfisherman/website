@@ -9,7 +9,7 @@ const lastfm_username = "ingenuineangel";
 function randomize_logo() {
     const logo = document.getElementById('logo_img');
     
-    let dir = "/img/logo/";
+    let dir = "/asset/img/logo/";
     let imgs = [
         "fishing_with_grandson_md_wht.gif",
         "fishingboat.gif",
