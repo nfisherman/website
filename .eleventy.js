@@ -1,13 +1,12 @@
-require('dotenv').config();
 const htmlmin = require('html-minifier-terser');
 const jsmin = require('terser');
 
 module.exports = (eleventyConfig) => {
-    eleventyConfig.addPassthroughCopy("./src/css/");
-    eleventyConfig.addPassthroughCopy("./src/fonts/");
-    eleventyConfig.addPassthroughCopy("./src/img/");
-    eleventyConfig.addPassthroughCopy("./src/js/");
+    eleventyConfig.addPassthroughCopy("./asset/");
+    eleventyConfig.addPassthroughCopy("./js/");
+    eleventyConfig.addPassthroughCopy("./style/")
     eleventyConfig.addPassthroughCopy("./copyright");
+    eleventyConfig.addPassthroughCopy("./index.html");
     eleventyConfig.addPassthroughCopy({
         "./tools/pull-latest.sh": "./pull-latest.sh"
     });
@@ -36,6 +35,7 @@ module.exports = (eleventyConfig) => {
     return {
         dir: {
             input: "src",
+            output: "dist"
         },
     };
 };
