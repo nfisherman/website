@@ -6,7 +6,9 @@ module.exports = (eleventyConfig) => {
     eleventyConfig.addPassthroughCopy("./js/");
     eleventyConfig.addPassthroughCopy("./style/")
     eleventyConfig.addPassthroughCopy("./copyright");
-    eleventyConfig.addPassthroughCopy("./index.html");
+    eleventyConfig.addPassthroughCopy({
+        "./site/index.html": "./index.html"
+    });
     eleventyConfig.addPassthroughCopy({
         "./tools/pull-latest.sh": "./pull-latest.sh"
     });
