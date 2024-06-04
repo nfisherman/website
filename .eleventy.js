@@ -34,8 +34,10 @@ module.exports = (eleventyConfig) => {
 
     return {
         dir: {
-            input: "src",
-            output: "dist"
+            input: "site",
+            includes: "_includes",
+			layouts: "_layouts",
+            output: "dist",
         },
     };
 };
