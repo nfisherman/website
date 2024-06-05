@@ -3,3 +3,263 @@
      * and/or modify it under the terms of the Do What The Fuck You Want
      * To Public License, Version 2, as published by Sam Hocevar. See
      * http://www.wtfpl.net/ for more details. */
+
+:root {
+     /* palette */
+     --white: #fbfbfb;
+     --gray: #a2a2a2;
+     --dark-gray: #797979;
+
+     --padding: 5px;
+
+     --card-text: 140px;
+}
+
+html {
+     font-family: 'NDS12', Arial, Helvetica, sans-serif;
+     background-image: url("/asset/img/background/dsbg.png");
+
+     padding: 10px;
+}
+
+body {
+     min-width: 620px;
+     max-width: 1004px;
+     max-height: 768px;
+     height: auto;
+     
+     aspect-ratio: 4 / 3;
+}
+
+.content {
+     width: 100%;
+     height: 100%;
+     background-color: white;
+     margin-bottom: 5px;
+     position: relative;
+
+     box-sizing: border-box;
+     border: 5px solid rgb(0, 0, 0);
+
+}
+
+header {
+     background-image: url("/asset/img/interface/16/taskbar-small.jpg");
+     background-size: auto;
+
+     height: 16px;
+     padding-left: var(--padding);
+     padding-right: var(--padding);
+     overflow: hidden;
+
+     color: var(--white);
+     font-size: 12px;
+}
+
+.sidebar {
+     background-image: url('/asset/img/background/dsbg-large.jpg');
+     background-size: auto;
+     background-position-x: -31px;
+     background-position-y: -23px;
+     border: 1px solid var(--white);
+     outline: 1px solid black;
+
+     padding: var(--padding);
+     /* overflow: hidden; */
+}
+
+.card {
+     background-image: url('/asset/img/interface/16/card-icon.jpg');
+     border: 1px solid var(--white);
+     outline: 1px solid black;
+     margin-bottom: /*calc(var(--padding) * 2)*/ 7px;
+
+     display: flex;
+     /* width: calc(32px + var(--card-text) + var(--padding) + 1.5px); */
+     height: 40.5px;
+     padding-right: 0;
+}
+
+.card-icon {
+     max-width: 32px;
+     max-height: 32px;
+     padding: 6px;
+     padding-right: calc(var(--card-text) + var(--padding) + 1.5px);
+}
+
+.card-label {
+     background-image: url('/asset/img/interface/16/card-label.jpg');
+     border: 1px solid var(--gray);
+     border-left: 1px solid var(--dark-gray);
+
+     display: flex;
+     width: var(--card-text);
+     height: 39px;
+     margin-left: calc(38px + var(--padding));
+     margin-right: 0;
+     position: absolute;
+
+     justify-content: center;
+     align-items: center;
+}
+
+.buttons {
+     display: flex;
+}
+
+.buttons > a {
+     user-drag: none;
+     -webkit-user-drag: none;
+     user-select: none;
+     -moz-user-select: none;
+     -webkit-user-select: none;
+     -ms-user-select: none;
+}
+
+.buttons > *:nth-child(2n + 1) {
+     margin-left: auto;
+}
+
+.buttons > *:nth-child(2n + 2) {
+     margin-left: 7px;
+     margin-right: auto;
+}
+
+button {
+     font-family: 'NDS12', Arial, Helvetica, sans-serif;
+     background-image: url("/asset/img/interface/16/button.jpg");
+     background-size: auto;
+     border: 1px solid var(--white);
+     outline: 1px solid black;
+
+     width: 89px;
+     height: 41px;
+}
+
+button:active {
+     background-image: url("/asset/img/interface/16/button-active.jpg");
+     border: 1px solid var(--gray);
+}
+
+.horizontal {
+     display: flex;
+     height: calc(93% - var(--padding));
+     max-height: 720px;
+     padding: var(--padding);
+     overflow-y: auto;
+}
+
+.center {
+     width: 65%;
+     padding-left: calc(var(--padding) * 2);
+     padding-right: calc(var(--padding) * 2);
+}
+
+main {
+     max-height: 91%;
+     overflow-x: hidden;
+     overflow-y: auto;
+     padding: var(--padding);
+     padding-top: 0;
+     margin-bottom: var(--padding);
+}
+
+.sa {
+     -webkit-transform: scaleX(-1);
+     transform: scaleX(-1);
+     height: 31px;
+}
+
+#sonic {
+     margin-right: 18px;
+}
+
+#tails {
+     margin-left: 18px;
+}
+
+/* https://stackoverflow.com/questions/21233033/how-can-i-create-a-marquee-effect */
+.marquee {
+     background-image: url('/asset/img/interface/16/card-label.jpg');
+     border: 1px solid var(--white);
+     outline: 1px solid black;
+
+     height: 31px;
+     overflow: hidden;
+}
+
+.marquee span {
+     display: inline-block;
+     width: max-content;
+   
+     padding-left: 100%;
+     /* show the marquee just outside the paragraph */
+     will-change: transform;
+     animation: marquee 12s linear infinite;
+}
+
+.marquee span > a {
+     text-decoration: none;
+}
+
+.marquee span:hover {
+     animation-play-state: paused
+}
+
+@keyframes marquee {
+     0% { transform: translate(0, 0); }
+     100% { transform: translate(-100%, 0); }
+}
+
+/* Respect user preferences about animations */
+
+@media (prefers-reduced-motion: reduce) {
+     .marquee span {
+          animation-iteration-count: 1;
+          animation-duration: 0.01; 
+          /* instead of animation: none, so an animationend event is 
+          * still available, if previously attached.
+          */
+          width: auto;
+          padding-left: 0;
+     }
+}
+
+footer {
+     overflow: hidden;
+     padding: var(--padding);
+     background-color: var(--white);
+     display:flex;
+}
+
+.footer {
+     width: 100%;
+}
+
+.footer#version {
+     text-align: center;
+}
+
+.footer#links {
+     text-align: right;
+}
+
+@media screen and (min-width: 800px) {
+     header {
+          background-image: url("/asset/img/interface/32/taskbar-small.jpg");
+
+          height: 32px;
+
+          font-size: 22px;
+     }
+}
+
+@media screen and (min-width: 1024px) {
+     header {
+          background-image: url("/asset/img/interface/48/taskbar-small.jpg");
+
+          height: 48px;
+
+          font-size: 32px;
+     }
+}
